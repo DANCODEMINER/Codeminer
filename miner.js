@@ -243,6 +243,29 @@ function bindPinInputs() {
         checkPinLength();
       });
 
+      function bindVerifyPinInputs() {
+  const inputs = ["pinverify1", "pinverify2", "pinverify3", "pinverify4"];
+  inputs.forEach((id, index) => {
+    const input = document.getElementById(id);
+    if (input) {
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/[^0-9]/g, "");
+        if (input.value.length === 1 && index < inputs.length - 1) {
+          const next = document.getElementById(inputs[index + 1]);
+          if (next) next.focus();
+        }
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && input.value === "" && index > 0) {
+          const prev = document.getElementById(inputs[index - 1]);
+          if (prev) prev.focus();
+        }
+      });
+    }
+  });
+      }
+
       input.addEventListener("keydown", (e) => {
         if (e.key === "Backspace" && input.value === "" && index > 0) {
           const prev = document.getElementById(inputs[index - 1]);
