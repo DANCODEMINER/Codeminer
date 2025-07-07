@@ -343,7 +343,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  bindPinInputs();
+  bindPinInputs();         // Already present
+  bindVerifyPinInputs();   // ✅ Add this for pinverify1–4
 });
 
 function focusFirstPinVerifyInput() {
